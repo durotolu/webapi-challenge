@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-//import Actions from './Actions'
+import Actions from './Actions';
 
 function App() {
 
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    debugger
     axios.get('http://localhost:5500/api/projects')
       .then(res => {
         console.log(res)
@@ -26,13 +25,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          {projects.map(project => <Link to={`/${project.id}`}>
+          {projects.map(project => (<Link to={`/${project.id}`}>
                                 <div>{project.name}</div>
                                 <div>{project.description}</div>
                                 </Link>
-          )}
+          ))}
         </div>
-        {/* <Route path='/:id' render={props => <Actions {...props} />}/> */}
+        <Route path='/:id' component={Actions}/>
       </header>
     </div>
   );
