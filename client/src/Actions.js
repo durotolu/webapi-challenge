@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import './App.css';
+
+const ActionStyle = styled.div`
+    background-color: #010038;
+    color: #f39422;
+
+    section {
+        margin: 1em;
+        border-top: 0.5em solid #537ec5;
+    }
+`
 
 function Actions(props) {
 
@@ -17,15 +28,15 @@ function Actions(props) {
   }, [props.match.params.id])
 
   return (
-    <div className="App">
+    <ActionStyle className="App">
         <div>
-            {actions.map(action => <div>
+            {actions.map(action => <section>
                                     <div>notes: {action.notes}</div>
                                     <div>description: {action.description}</div>
-                                </div>
+                                </section>
             )}
         </div>
-    </div>
+    </ActionStyle>
   );
 }
 
