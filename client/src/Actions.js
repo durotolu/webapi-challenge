@@ -3,16 +3,12 @@ import axios from 'axios';
 import './App.css';
 
 function Actions(props) {
-    debugger
 
   const [actions, setActions] = useState([])
 
   useEffect(() => {
-      debugger
-    axios.get(`http://localhost:4500/api/projects/${props.match.params.id}/actions`)
+    axios.get(`http://localhost:5500/api/projects/${props.match.params.id}/actions`)
       .then(res => {
-        console.log(res)
-        debugger
         setActions(res.data)
       })
       .catch(err => {
@@ -24,8 +20,8 @@ function Actions(props) {
     <div className="App">
         <div>
             {actions.map(action => <div>
-                                    <div>{action.note}</div>
-                                    <div>{action.description}</div>
+                                    <div>notes: {action.notes}</div>
+                                    <div>description: {action.description}</div>
                                 </div>
             )}
         </div>
