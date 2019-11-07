@@ -12,3 +12,10 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+
+require('dotenv').config();
+const server = require('./server');
+
+server.listen(process.env.PORT, () => {
+    console.log('server is listening on ' + (process.env.PORT));
+});
